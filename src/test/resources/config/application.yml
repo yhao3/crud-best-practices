@@ -13,8 +13,14 @@ spring:
     hibernate:
       ddl-auto: update
     properties:
-      hibernate:
-        '[generate_statistics]': true
+      hibernate.format_sql: true
+      hibernate.generate_statistics: true
+      hibernate.jdbc.time_zone: UTC+8
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.use_query_cache: false
+      hibernate.javax.cache.missing_cache_strategy: fail
   elasticsearch:
     uris: http://localhost:9200
     properties:

@@ -2,6 +2,7 @@ package org.yhao3.crudbestpractice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -21,6 +22,7 @@ import java.util.Set;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "bill")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Bill implements Serializable {
 
     @Serial
@@ -44,7 +46,8 @@ public class Bill implements Serializable {
     @LastModifiedDate
     private Instant lastModifiedDate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "bill")
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "bill")
     @JsonIgnoreProperties(value = "bill", allowSetters = true)
     private Set<BillDetail> billDetails = new java.util.LinkedHashSet<>();
 

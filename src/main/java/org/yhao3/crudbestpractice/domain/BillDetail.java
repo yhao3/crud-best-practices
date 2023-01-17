@@ -2,6 +2,7 @@ package org.yhao3.crudbestpractice.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -15,6 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "bill_detail")
 @EntityListeners(AuditingEntityListener.class)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class BillDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bill_detail_seq")

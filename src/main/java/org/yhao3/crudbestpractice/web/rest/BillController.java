@@ -1,11 +1,6 @@
 package org.yhao3.crudbestpractice.web.rest;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonNullFormatVisitor;
-import jakarta.json.JsonMergePatch;
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
-import org.eclipse.parsson.JsonMergePatchImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchPage;
@@ -27,7 +22,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @RestController
 @RequestMapping("/api")
 public class BillController {
